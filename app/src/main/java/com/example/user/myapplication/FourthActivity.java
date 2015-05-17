@@ -22,9 +22,8 @@ public class FourthActivity extends AppCompatActivity {
     private EditText editText;
     private ListView listView;
 
-    private List<String> stringList = new ArrayList<String>();
 
-    private MyCustomAdapter<String> myCustomAdapter;
+    private MyCustomAdapter<Student> myCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class FourthActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listView);
 
 
-        myCustomAdapter = new MyCustomAdapter<>(this, stringList);
+        myCustomAdapter = new MyCustomAdapter<>(this);
         listView.setAdapter(myCustomAdapter);
 
 
@@ -52,7 +51,10 @@ public class FourthActivity extends AppCompatActivity {
 
 
     public void onClickAddToList(View view){
-        myCustomAdapter.addItem(editText.getText().toString());
+
+        Student student = new Student(editText.getText().toString());
+
+        myCustomAdapter.addItem(student);
         myCustomAdapter.notifyDataSetChanged();
 
         editText.setText("");
