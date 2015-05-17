@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes!!!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-               Log.d(TAG, "Dialog button clicked!!");
+                Log.d(TAG, "Dialog button clicked!!");
             }
         });
 
@@ -199,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.d(TAG, "onResume");
 
-        Log.d(TAG, "Saved String is "+ getString(KEY_NAME, "Default String"));
+        Log.d(TAG, "Saved String is " + getString(KEY_NAME, "Default String"));
 
     }
 
@@ -219,6 +220,12 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // Do something
+            Toast.makeText(this, "Settings pressed!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_menu_item_2){
+
+            Toast.makeText(this, "Item 2 pressed!", Toast.LENGTH_SHORT).show();
             return true;
         }
 
