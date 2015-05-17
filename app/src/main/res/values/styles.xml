@@ -4,6 +4,18 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
 
+        <item name="android:windowBackground">@color/background</item>
+
+    </style>
+
+
+    <style name="AppTheme.MyTextView" parent="AppTheme">
+
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColorHint">@color/text_color_light</item>
+
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
 
     </style>
 
