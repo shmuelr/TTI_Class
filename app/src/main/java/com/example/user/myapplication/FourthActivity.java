@@ -24,7 +24,7 @@ public class FourthActivity extends AppCompatActivity {
 
     private List<String> stringList = new ArrayList<String>();
 
-    private ArrayAdapter<String> arrayAdapter;
+    private MyCustomAdapter<String> myCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,8 @@ public class FourthActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listView);
 
 
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, stringList);
-        listView.setAdapter(arrayAdapter);
+        myCustomAdapter = new MyCustomAdapter<>(this, stringList);
+        listView.setAdapter(myCustomAdapter);
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,8 +52,8 @@ public class FourthActivity extends AppCompatActivity {
 
 
     public void onClickAddToList(View view){
-        arrayAdapter.add(editText.getText().toString());
-        arrayAdapter.notifyDataSetChanged();
+        myCustomAdapter.addItem(editText.getText().toString());
+        myCustomAdapter.notifyDataSetChanged();
 
         editText.setText("");
     }
