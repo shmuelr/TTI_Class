@@ -20,7 +20,20 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent intent = getIntent();
+
+        if(intent.hasExtra(Tools.MY_INTENT_KEY)){
+            String userInputFromOtherActivity = intent.getStringExtra(Tools.MY_INTENT_KEY);
+
+            setResult(RESULT_OK);
+
+            intent.putExtra(Tools.MY_RETURN_KEY, "Some data");
+            finish();
+        }
+
+
         String myData = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+
         if(myData != null){
 
             Toast.makeText(this,"You gave me:"+ myData, Toast.LENGTH_LONG).show();

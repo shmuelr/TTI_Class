@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".SecondActivity"
             android:label="Text Receiver"
@@ -37,6 +39,8 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".ThirdActivity"
             android:label="@string/title_activity_third"

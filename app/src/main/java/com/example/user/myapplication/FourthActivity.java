@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -24,6 +25,7 @@ public class FourthActivity extends AppCompatActivity {
 
     private EditText editText;
     private ListView listView;
+    private ImageView imageView;
 
     private static final String FILENAME = "data_file";
 
@@ -34,8 +36,12 @@ public class FourthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth);
+
         editText = (EditText)findViewById(R.id.editText);
         listView = (ListView)findViewById(R.id.listView);
+        imageView = (ImageView)findViewById(R.id.imageView);
+
+        imageView.setImageResource(R.drawable.adobe);
 
 
         myCustomAdapter = new MyCustomAdapter<>(this);

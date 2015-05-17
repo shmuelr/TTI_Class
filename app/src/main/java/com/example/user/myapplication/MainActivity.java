@@ -112,13 +112,25 @@ public class MainActivity extends AppCompatActivity {
 
                         String userInput = myEditText.getText().toString();
 
-                        saveString(KEY_NAME, userInput);
+                        // This is an explicit intent
+                        Intent myIntent = new Intent(MainActivity.this, SecondActivity.class);
 
-                        showCustomDialog("Save data", userInput + " was saved successfully!");
-
-                       /* // This comes from the user
+                        myIntent.putExtra(Tools.MY_INTENT_KEY, userInput);
 
 
+                        startActivityForResult(myIntent, R.id.activity_2_id);
+
+
+
+
+
+
+                        //saveString(KEY_NAME, userInput);
+
+                        //showCustomDialog("Save data", userInput + " was saved successfully!");
+
+
+                        // This is an implicit intent
                         Intent sendIntent = new Intent();
                         sendIntent.setAction(Intent.ACTION_SEND);
                         sendIntent.putExtra(Intent.EXTRA_TEXT, userInput);
@@ -167,6 +179,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode == R.id.activity_2_id && resultCode == RESULT_OK){
+            String someStringThatWasReturned = data.getStringExtra(Tools.MY_RETURN_KEY);
+
+        }
+
+
 
         if(requestCode == SECOND_ACTIVITY_ID){
 
