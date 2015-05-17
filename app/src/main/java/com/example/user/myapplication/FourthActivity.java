@@ -1,5 +1,6 @@
 package com.example.user.myapplication;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,13 +15,17 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class FourthActivity extends AppCompatActivity {
 
     private EditText editText;
     private ListView listView;
+
+    private static final String FILENAME = "data_file";
 
 
     private MyCustomAdapter<Student> myCustomAdapter;
@@ -49,18 +54,68 @@ public class FourthActivity extends AppCompatActivity {
 
 
 
+    public void onClickClear(View view){
+        myCustomAdapter.clearList();
+    }
+
 
     public void onClickAddToList(View view){
 
         Student student = new Student(editText.getText().toString());
 
         myCustomAdapter.addItem(student);
-        myCustomAdapter.notifyDataSetChanged();
 
         editText.setText("");
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        loadData();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        saveData();
+    }
+
+
+    public void saveData() {
+
+        Set<String> stringSet = new HashSet<>();
+
+        for(MyCustomAdapter.AdapterInterface item : myCustomAdapter.getItemList()){
+            stringSet.add(item.getText1());
+        }
+
+        SharedPreferences settings = this.getSharedPreferences(FILENAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putStringSet("saved_set", stringSet);
+
+        // Commit the edits!
+        editor.commit();
+
+
+
+    }
+
+    public void loadData() {
+
+        SharedPreferences settings = this.getSharedPreferences(FILENAME, 0);
+        Set<String> stringSet = settings.getStringSet("saved_set", new HashSet<String>());
+
+        for (String string : stringSet){
+
+            Student student = new Student(string);
+
+            myCustomAdapter.addItem(student);
+        }
+    }
 
     @Override
      public boolean onCreateOptionsMenu(Menu menu) {

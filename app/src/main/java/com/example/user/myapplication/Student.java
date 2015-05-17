@@ -1,11 +1,12 @@
 package com.example.user.myapplication;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Created by User on 5/17/2015.
  */
-public class Student implements MyCustomAdapter.AdapterInterface {
+public class Student implements MyCustomAdapter.AdapterInterface{
 
     private String  name;
     private int     age;

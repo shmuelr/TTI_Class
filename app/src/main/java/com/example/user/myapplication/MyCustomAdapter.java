@@ -1,6 +1,7 @@
 package com.example.user.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by User on 5/17/2015.
@@ -18,6 +24,7 @@ import java.util.List;
 public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends BaseAdapter{
 
     private static final String TAG = "MyAdapter";
+
 
     private List<T> itemList;
     private Context context;
@@ -33,6 +40,16 @@ public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends
 
     public void addItem(T item){
         itemList.add(item);
+        notifyDataSetChanged();
+    }
+
+    public List<T> getItemList(){
+        return itemList;
+    }
+
+    public void clearList(){
+        itemList.clear();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -76,6 +93,8 @@ public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends
 
         return rowView;
     }
+
+
 
 
     public interface AdapterInterface{
