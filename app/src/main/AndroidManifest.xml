@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.myapplication" >
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".SecondActivity"
             android:label="Text Receiver"
@@ -39,8 +35,6 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ThirdActivity"
             android:label="@string/title_activity_third"
@@ -52,6 +46,14 @@
         <activity
             android:name=".FourthActivity"
             android:label="@string/title_activity_fourth"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RecyclerActivity"
+            android:label="@string/title_activity_recycler"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

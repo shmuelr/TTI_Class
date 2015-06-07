@@ -72,6 +72,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recycler Activity"
+        android:id="@+id/button3"
+        android:layout_above="@+id/consoleTextView"
+        android:layout_toLeftOf="@+id/secondButton"
+        android:layout_toStartOf="@+id/secondButton" />
+
 
     <!--
 

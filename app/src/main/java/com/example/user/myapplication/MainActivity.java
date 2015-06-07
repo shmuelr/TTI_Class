@@ -91,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, RecyclerActivity.class));
+            }
+        });
+
 
         setUpFirstButton();
 

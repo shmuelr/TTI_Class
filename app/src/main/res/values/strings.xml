@@ -8,4 +8,5 @@
     <string name="title_activity_third">ThirdActivity</string>
     <string name="title_activity_fourth">Fourth Activity</string>
     <string name="action_menu_item_2">Item 2</string>
+    <string name="title_activity_recycler">RecyclerActivity</string>
 </resources>
