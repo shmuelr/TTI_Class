@@ -6,10 +6,10 @@ package com.example.user.myapplication;
 public class Tools {
 
     public static final String MY_INTENT_KEY = "some_string";
+    public static final String MY_RETURN_KEY = "some_key";
 
 
-
-public static void someOtherMethod(){
+    public static void someOtherMethod(){
 
 }
 

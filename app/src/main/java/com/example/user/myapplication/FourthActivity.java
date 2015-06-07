@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -52,7 +53,7 @@ public class FourthActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Log.d("Tag", ((String)adapterView.getItemAtPosition(position)) +" was clicked!");
+                Log.d("Tag", ((String) adapterView.getItemAtPosition(position)) + " was clicked!");
 
             }
         });

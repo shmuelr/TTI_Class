@@ -25,6 +25,12 @@ public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends
 
     private static final String TAG = "MyAdapter";
 
+    static class ViewHolder{
+        TextView textView1;
+        TextView textView2;
+    }
+
+
 
     private List<T> itemList;
     private Context context;
@@ -36,6 +42,7 @@ public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends
         itemList = new ArrayList<>();
 
     }
+
 
 
     public void addItem(T item){
@@ -69,29 +76,43 @@ public class MyCustomAdapter<T extends MyCustomAdapter.AdapterInterface> extends
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
         Log.i(TAG, "getView() called at position " + position);
-
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.list_item, parent, false);
-
-
-        TextView textView1 = (TextView)rowView.findViewById(R.id.textView1);
+        Log.i(TAG, "convert view is null - " + (convertView==null));
 
 
 
-        TextView textView2 = (TextView)rowView.findViewById(R.id.textView2);
+        ViewHolder myViewHolder;
+
+        if (convertView == null) {
+
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.list_item, parent, false);
+
+            myViewHolder = new ViewHolder();
+            myViewHolder.textView1 =(TextView)convertView.findViewById(R.id.textView1);
+            myViewHolder.textView2 =(TextView)convertView.findViewById(R.id.textView2);
+
+            convertView.setTag(myViewHolder);
+
+        }else{
+
+            myViewHolder = (ViewHolder) convertView.getTag();
+
+        }
+
+
+
+
 
 
         T item = itemList.get(position);
 
-        textView1.setText(item.getText1());
-        textView2.setText(item.getText2());
+        myViewHolder.textView1.setText(item.getText1());
+        myViewHolder.textView2.setText(item.getText2());
 
 
-        return rowView;
+        return convertView;
     }
 
 
