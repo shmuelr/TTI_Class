@@ -57,6 +57,8 @@ public class FourthActivity extends AppCompatActivity {
 
             }
         });
+
+        listView.addHeaderView(this.getLayoutInflater().inflate(R.layout.list_header, null));
     }
 
 
