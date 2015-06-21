@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -89,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
         secondButton = (Button) findViewById(R.id.secondButton);
         consoleTextView = (TextView) findViewById(R.id.consoleTextView);
         spinner = (Spinner) findViewById(R.id.spinner);
+
+        String[] array = new String[]{"London", "New York", "Los Angeles"};
+
+        spinner.setAdapter(new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                array));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
