@@ -43,7 +43,7 @@
         android:theme="@style/AppTheme.MyTextView"
 
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:text="This is our console"
         android:id="@+id/consoleTextView"
         android:layout_below="@+id/button"
@@ -80,6 +80,15 @@
         android:layout_above="@+id/consoleTextView"
         android:layout_toLeftOf="@+id/secondButton"
         android:layout_toStartOf="@+id/secondButton" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/consoleTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:entries="@array/spinner_items"/>
 
 
     <!--

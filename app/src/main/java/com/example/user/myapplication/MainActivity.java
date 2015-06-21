@@ -6,12 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.internal.app.ToolbarActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText myEditText;
     private TextView myTextView;
     private TextView consoleTextView;
+    private Spinner spinner;
 
 
     @Override
@@ -84,7 +88,20 @@ public class MainActivity extends AppCompatActivity {
         myButton = (Button) findViewById(R.id.button);
         secondButton = (Button) findViewById(R.id.secondButton);
         consoleTextView = (TextView) findViewById(R.id.consoleTextView);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Selected "+parent.getAdapter().getItem(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(MainActivity.this, "Nothing selected", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         if(myButton == null){
             Log.e(TAG, "myButton is null!!");
@@ -119,13 +136,23 @@ public class MainActivity extends AppCompatActivity {
 
                         String userInput = myEditText.getText().toString();
 
+
+                        int spinnerSelectedPosition = spinner.getSelectedItemPosition();
+
+                        if( spinner.getSelectedItem().toString().equals("One")){
+
+                        }
+
+                        Toast.makeText(MainActivity.this, spinner.getSelectedItem()+" selected",Toast.LENGTH_SHORT).show();
+
+
                         // This is an explicit intent
                         Intent myIntent = new Intent(MainActivity.this, SecondActivity.class);
 
                         myIntent.putExtra(Tools.MY_INTENT_KEY, userInput);
 
 
-                        startActivityForResult(myIntent, R.id.activity_2_id);
+                       // startActivityForResult(myIntent, R.id.activity_2_id);
 
 
 
